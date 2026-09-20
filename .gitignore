@@ -1,0 +1,53 @@
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+uv-cache/
+.uv-cache/
+
+# --- Runtime caches ---------------------------------------------------------
+# Fetched page text kept between runs so verification does not re-fetch the same
+# URL. Pure run state: reproducible from the network, never a source of truth.
+**/.cache/
+
+# --- Docker -----------------------------------------------------------------
+# Docker buildx keeps state in DOCKER_CONFIG; the build redirects it here so the
+# build works inside a sandboxed workspace instead of writing to ~/.docker
+.docker/
+.docker-build.log
+
+# --- Secrets — never commit keys, tokens or captured credentials -------------
+.env
+.env.*
+!.env.example
+*.credentials.json
+.credentials.json
+credentials.json
+*.credentials.lock
+# Where the `nurok` client keeps its session, when NUROK_HOME is pointed here.
+.nurok-home/
+
+# --- Run outputs and scratch -------------------------------------------------
+# Every run directory and regrade output is reproducible from the agent and the
+# corpus; none of it is source. `.regrade/` holds re-scoring scratch and the launch
+# scripts for a round, which carry corpus addresses and local paths.
+/data/
+/results/
+/benchmark-runs/
+/.regrade/
+.tmp*/
+tmp/
+*.tmp
+
+# --- Analysis scratch --------------------------------------------------------
+# Output of the tools/ scripts: agreement reports, fetched baselines, model lists.
+/.agreement*.txt
+/.adjudication.txt
+/.judge-verdicts.json
+
+# --- Local notes -------------------------------------------------------------
+# Design notes, release preparation and investigation scratch. Kept on disk,
+# deliberately never published: this repository is the benchmark, not the story of
+# how it was built.
+/docs/
