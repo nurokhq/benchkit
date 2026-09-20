@@ -51,3 +51,4 @@ tmp/
 # deliberately never published: this repository is the benchmark, not the story of
 # how it was built.
 /docs/
+/articles/
